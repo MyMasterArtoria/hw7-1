@@ -36,7 +36,7 @@ public class ArrayDictionary implements Dictionary {
             return true;
         }
 
-        KVEntry ptr = entries[hashedKey];
+        KVEntry ptr = entries[hashedKey];//comment
         KVEntry pNewNode = null;
         while (ptr != null) {
             // update value if key already exists
