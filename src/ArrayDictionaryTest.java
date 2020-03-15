@@ -17,8 +17,24 @@ public class ArrayDictionaryTest {
     @Test
     public void remove() {
     	ArrayDictionary dict0 = new ArrayDictionary(0);
-    	
-        assertTrue(false);  // place holder
+    	boolean set0=dict0.remove(1);
+    	 assertEquals(set0,false);
+    	 
+    	 ArrayDictionary dict1 = new ArrayDictionary(5);
+    	 dict1.add(1, 50);
+     	boolean set1a=dict1.remove(1);
+     	 assertEquals(set1a,true);
+     	 boolean set1b=dict1.remove(2);
+     	 assertEquals(set1b,false);
+     	 dict1.add(1, 50);dict1.add(6, 100);
+     	 boolean set1d=dict1.remove(2);
+     	boolean set1c=dict1.remove(6);
+     	assertEquals(set1c,true);
+     	assertEquals(set1d,false);
+     	dict1.add(4, 78);dict1.add(9, 97);
+     	boolean set1e=dict1.remove(0);
+     	assertEquals(set1e,false);
+        
     }
 
     @Test

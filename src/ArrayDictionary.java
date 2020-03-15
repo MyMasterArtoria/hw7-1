@@ -57,11 +57,28 @@ public class ArrayDictionary implements Dictionary {
     @Override
     public boolean remove(int key) {
         boolean r=false;
-      
+        if(capacity==0||key<0)
+        {return r;}
         if (contains(hashFunction(key)))
         {
-        	entries[key]=null;
+        	if(key<capacity) {
+        	entries[key]=entries[key].next;
         	r=true;
+        	return r;
+        	}
+        	else 
+        	{
+        		KVEntry ptr = entries[hashFunction(key)];
+        		while(ptr.next!=null)
+        		{
+        			if(ptr.next.key==key)
+        			{ptr.next=ptr.next.next;
+        			count--;
+        			r=true;
+        			return r;}
+        			else {ptr=ptr.next;}
+        		}
+        	}
         }
         return r;
     }
