@@ -71,11 +71,32 @@ public class ArrayDictionary implements Dictionary {
     @Override
     public boolean contains(int key) {
     	boolean c=false;
-    	if (key>capacity)
+    	if (key<0||capacity==0)
     	{return c;}
-    	if(entries[key]!=null)
+    	if(key<capacity) {
+    		if(entries[key]!=null)
+    			{
+    			c=true;
+    			}
+    		}
+    	else {
+    	
+    	if(entries[hashFunction(key)]!=null)
     	{
-    		c=true;
+    		
+    		KVEntry ptr = entries[hashFunction(key)];
+    		
+    		while(ptr!=null)
+    			{
+    			
+    				if(ptr.key==key)
+    				{c=true;
+    				return c;}
+    				else
+    				{ptr=ptr.next;}
+    			}	
+    	}
+    	
     	}
     	return c;
     }
