@@ -25,7 +25,6 @@ public class ArrayDictionary implements Dictionary {
     public boolean add(int key, int value) {
 
         int hashedKey = hashFunction(key);
-
         // when there's no entry yet
         if (entries[hashedKey] == null) {
             if (count == capacity) {
@@ -36,7 +35,7 @@ public class ArrayDictionary implements Dictionary {
             return true;
         }
 
-        KVEntry ptr = entries[hashedKey];//comment
+        KVEntry ptr = entries[hashedKey];
         KVEntry pNewNode = null;
         while (ptr != null) {
             // update value if key already exists
@@ -57,16 +56,28 @@ public class ArrayDictionary implements Dictionary {
     // Return true if an entry is deleted, false otherwise
     @Override
     public boolean remove(int key) {
-        // homework
-        return false;
+        boolean r=false;
+      
+        if (contains(hashFunction(key)))
+        {
+        	entries[key]=null;
+        	r=true;
+        }
+        return r;
     }
 
     // Return true when the dictionary contains an entry
     // with the key
     @Override
     public boolean contains(int key) {
-        // homework
-        return false;
+    	boolean c=false;
+    	if (key>capacity)
+    	{return c;}
+    	if(entries[key]!=null)
+    	{
+    		c=true;
+    	}
+    	return c;
     }
 
     // Return the entry value with the given key
